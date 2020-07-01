@@ -1,37 +1,37 @@
 import Foundation
 
 #if os(Linux)
-public enum BaudRate {
-    case baud0
-    case baud50
-    case baud75
-    case baud110
-    case baud134
-    case baud150
-    case baud200
-    case baud300
-    case baud600
-    case baud1200
-    case baud1800
-    case baud2400
-    case baud4800
-    case baud9600
-    case baud19200
-    case baud38400
-    case baud57600
-    case baud115200
-    case baud230400
-    case baud460800
-    case baud500000
-    case baud576000
-    case baud921600
-    case baud1000000
-    case baud1152000
-    case baud1500000
-    case baud2000000
-    case baud2500000
-    case baud3500000
-    case baud4000000
+public enum BaudRate: Int {
+    case baud0 = 0
+    case baud50 = 50
+    case baud75 = 75
+    case baud110 = 110
+    case baud134 = 134
+    case baud150 = 150
+    case baud200 = 200
+    case baud300 = 300
+    case baud600 = 600
+    case baud1200 = 1200
+    case baud1800 = 1800
+    case baud2400 = 2400
+    case baud4800 = 4800
+    case baud9600 = 9600
+    case baud19200 = 19200
+    case baud38400 = 38400
+    case baud57600 = 57600
+    case baud115200 = 115200
+    case baud230400 = 230400
+    case baud460800 = 460800
+    case baud500000 = 500000
+    case baud576000 = 576000
+    case baud921600 = 921600
+    case baud1000000 = 1000000
+    case baud1152000 = 1152000
+    case baud1500000 = 1500000
+    case baud2000000 = 2000000
+    case baud2500000 = 2500000
+    case baud3500000 = 3500000
+    case baud4000000 = 4000000
 
     var speedValue: speed_t {
         switch self {
@@ -99,26 +99,26 @@ public enum BaudRate {
     }
 }
 #elseif os(OSX)
-public enum BaudRate {
-    case baud0
-    case baud50
-    case baud75
-    case baud110
-    case baud134
-    case baud150
-    case baud200
-    case baud300
-    case baud600
-    case baud1200
-    case baud1800
-    case baud2400
-    case baud4800
-    case baud9600
-    case baud19200
-    case baud38400
-    case baud57600
-    case baud115200
-    case baud230400
+public enum BaudRate: Int {
+    case baud0 = 0
+    case baud50 = 50
+    case baud75 = 75
+    case baud110 = 110
+    case baud134 = 134
+    case baud150 = 150
+    case baud200 = 200
+    case baud300 = 300
+    case baud600 = 600
+    case baud1200 = 1200
+    case baud1800 = 1800
+    case baud2400 = 2400
+    case baud4800 = 4800
+    case baud9600 = 9600
+    case baud19200 = 19200
+    case baud38400 = 38400
+    case baud57600 = 57600
+    case baud115200 = 115200
+    case baud230400 = 230400
 
     var speedValue: speed_t {
         switch self {
