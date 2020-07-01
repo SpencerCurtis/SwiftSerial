@@ -1,82 +1,6 @@
 # SwiftSerial
-A Swift Linux and Mac library for reading and writing to serial ports. This library has been tested to work on macOS Mojove, Linux Mint 18 (based on Ubuntu 16.04) and on the [Raspberry Pi 3 on Ubuntu 16.04](https://wiki.ubuntu.com/ARM/RaspberryPi) and Raspberry Pi 4 on Raspian Buster. Other platforms using Ubuntu like the Beaglebone might work as well.
 
-This library is an improvement over my previous now deprecated library [SwiftLinuxSerial](https://github.com/yeokm1/SwiftLinuxSerial) which was less Swifty and supported only Linux. This library is thanks largely to [Jay Jun](https://github.com/jayjun). His original pull request can be found [here](https://github.com/yeokm1/SwiftLinuxSerial/pull/1).
-
-## Talk on this library
-
-I gave a talk on this library and one of its examples SwiftSerialIM. Click on the links below to see the slides and video.
-
-[![My slides on slideshare](first-slide.png)](http://www.slideshare.net/yeokm1/a-science-project-swift-serial-chat)
-
-[![](http://img.youtube.com/vi/6PWP1eZo53s/0.jpg)](https://www.youtube.com/watch?v=6PWP1eZo53s)
-
-## Mac OS Preparation
-
-You should have Xcode 8 installed with the command line tools.
-
-To develop app with XCode, enable the App Sandbox capability in Xcode, and under Hardware, select USB. (Mac Apps are sandboxed and you need the USB entitlement.)
-<img src="https://user-images.githubusercontent.com/5688874/55690960-6ff8fb00-5998-11e9-9df6-7e3ebe50e19a.png" alt="Swift 3.0">
-
-## Linux System Preparation
-
-Varies depending on system...
-
-## Jumping straight into sample code
-To get started quickly, you can take a look at my example projects [here](Examples/).
-
-### Example 1: Loopback Test
-
-In order to run this example properly, you need to connect one of your (USB/UART) serial ports in a loopback manner. Basically, you short the TX and RX pins of the serial port. This library currently only support the `/dev/cu.*` variant on Mac. Read the beginning of the API usage section for more details.
-
-```bash
-git clone https://github.com/yeokm1/SwiftSerial.git
-cd SwiftSerial/Examples/SwiftSerialExample/
-swift build
-
-#For Linux: You need root to access the serial port. Replace /dev/ttyUSB0 with the name of your serial port under test
-sudo ./.build/debug/SwiftSerialExample /dev/ttyUSB0
-
-#For Mac: Root is not required
-./.build/debug/SwiftSerialExample /dev/cu.usbserial
-
-#If all goes well you should see a series of messages informing you that data transmitted has been received properly.
-```
-
-### Example 2: Binary Loopback Test
-
-Variant of example 1 but testing the transfer of binary data specifically ensuring the`0x0D` bit is not converted to another character.
-
-```bash
-git clone https://github.com/yeokm1/SwiftSerial.git
-cd SwiftSerial/Examples/SwiftSerialBinary/
-swift build
-
-#For Linux: You need root to access the serial port. Replace /dev/ttyUSB0 with the name of your serial port under test
-sudo ./.build/debug/SwiftSerialBinary /dev/ttyUSB0
-
-#For Mac: Root is not required
-./.build/debug/SwiftSerialBinary /dev/cu.usbserial
-
-#If all goes well you should see a series of messages informing you that data transmitted has been received properly.
-```
-
-### Example 3: A chat app between 2 machines
-
-In order to run this example properly, you need 2 machines connected by a [null-modem cable](https://en.wikipedia.org/wiki/Null_modem) or 2 USB-Serial adapters with the TX-RX pins connected to each other. Run a copy of my program on both machines.
-
-```bash
-git clone https://github.com/yeokm1/SwiftSerial.git
-cd SwiftSerial/Examples/SwiftSerialIM/
-swift build
-
-#For Linux: You need root to access the serial port. Replace /dev/ttyUSB0 with the name of your serial port under test
-sudo ./.build/debug/SwiftSerialIM /dev/ttyUSB0
-
-#For Mac: Root is not required
-./.build/debug/SwiftSerialIM /dev/cu.usbserial
-```
-People at both machines can now "chat" with each other.
+A fork of [yeokm1's](https://github.com/yeokm1/SwiftSerial) Swift Linux and Mac library for reading and writing to serial ports. My use case is to communicate with a home audio amplifier 
 
 ## Integrating with your project
 
@@ -86,7 +10,7 @@ Add SwiftSerial as a dependency to your project by editing the `Package.swift` f
 let package = Package(
     name: "NameOfMyProject",
     dependencies: [
-        .package(url: "https://github.com/yeokm1/SwiftSerial.git", from: "0.1.2"),
+        .package(url: "https://github.com/yeokm1/SwiftSerial.git", from: "0.1.3"),
         ...
     ]
     ...
@@ -210,7 +134,7 @@ Just do `serialPort.closePort()` to close the port once you are done using it.
 
 ## External References
 
-This library cannot be written without the amazing reference code I depended on.
+This library cannot be written without the amazing reference code yeokm1 depended on.
 
 1. [Xanthium's Serial Port Programming on Linux](http://xanthium.in/Serial-Port-Programming-on-Linux)
 2. [Chrishey Drick's Reading data from Serial Port](https://chrisheydrick.com/2012/06/17/how-to-read-serial-data-from-an-arduino-in-linux-with-c-part-3/)
