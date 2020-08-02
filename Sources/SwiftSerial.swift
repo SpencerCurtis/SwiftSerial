@@ -248,7 +248,7 @@ public class SerialPort {
         }
 
     #if os(Linux)
-        fileDescriptor = open(path, readWriteParam | O_NOCTTY)
+        fileDescriptor = open(path, readWriteParam | O_NOCTTY | O_NONBLOCK)
     #elseif os(OSX)
         fileDescriptor = open(path, readWriteParam | O_NOCTTY | O_EXLOCK | O_NONBLOCK)
     #endif
