@@ -455,7 +455,7 @@ extension SerialPort {
         }
     }
 
-    public func readLine() throws -> String {
+    @discardableResult public func readLine() throws -> String {
         let newlineChar = CChar(10) // Newline/Line feed character `\n` is 10
         return try readUntilChar(newlineChar)
     }
